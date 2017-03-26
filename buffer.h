@@ -67,9 +67,4 @@ unsigned	buf_size(t_buffer *buf);
 */
 void		buf_skip(t_buffer *buf, unsigned n);
 
-/*
-** For debugging purpose.
-*/
-void		buf_print(t_buffer *buf);
-
 #endif /*!BUFFER_H_ */

@@ -30,7 +30,8 @@ int	my_fputc(int c, t_my_file *stream)
       stream->flags |= LBS_ERR;
       return MY_EOF;
     }
-    c = buf_putc(stream->buffer, c);
+    if (-1 == (c = buf_putc(stream->buffer, c)))
+      stream->flags |= LBS_ERR;
   }
   return -1 == c ? MY_EOF : c;
 }

@@ -1,5 +1,5 @@
-#ifndef _LIBSTREAM_H
-# define _LIBSTREAM_H
+#ifndef LIBSTREAM_H_
+# define LIBSTREAM_H_
 
 # include "libstream_defines.h"
 # include "buffer.h"
@@ -38,4 +38,4 @@ int		my_fclose(t_my_file *stream);
 int		my_fgetc(t_my_file *stream);
 int		my_fputc(int c, t_my_file *stream);
 
-#endif
+#endif /*!LIBSTREAM_H_ */
