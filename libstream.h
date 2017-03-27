@@ -38,4 +38,9 @@ int		my_fclose(t_my_file *stream);
 int		my_fgetc(t_my_file *stream);
 int		my_fputc(int c, t_my_file *stream);
 
+/*
+** Level 1.
+*/
+int		my_fflush(t_my_file *stream);
+
 #endif /*!LIBSTREAM_H_ */
