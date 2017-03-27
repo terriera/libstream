@@ -64,6 +64,6 @@ t_my_file	*my_fopen(const char *path, const char *mode)
   }
   stream->fildes = fildes;
   stream->flags = flags;
-  stream->last_access = (LBS_WR == (stream->flags & LBS_WR)) ? ACC_WRITE : ACC_READ;
+  stream->last_access = (stream->flags & LBS_WR) ? ACC_WRITE : ACC_READ;
   return stream;
 }
