@@ -10,6 +10,20 @@
 #include "libstream.h"
 #include "buffer.h"
 
+#define min(a, b) ((a) > (b) ? (b) : (a))
+
+static void		*memcpy(void *dst, const void *src, size_t n)
+{
+  unsigned char		*d;
+  const unsigned char	*s;
+
+  d = dst;
+  s = src;
+  while (n--)
+    *d++ = *s++;
+  return dst;
+}
+
 t_buffer	*buf_new()
 {
   t_buffer	*buf;
@@ -35,6 +49,20 @@ int		buf_getc(t_buffer *buf)
   if (buf->limit <= buf->pos || 0 == buf->limit)
     return -1;
   return buf->data[buf->pos++];
+}
+
+size_t		buf_getbytes(t_buffer *buf, void *dst, size_t size)
+{
+  size_t	avail;
+
+  if (NULL == buf)
+    return 0;
+  if (buf->limit <= buf->pos || 0 == buf->limit)
+    return 0;
+  avail = min(buf->limit - buf->pos, size);
+  dst = memcpy(dst, &buf->data[buf->pos], avail);
+  buf->pos += avail;
+  return avail;
 }
 
 int		buf_fill(t_buffer *buf, int fildes)

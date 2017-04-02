@@ -41,6 +41,10 @@ int		my_fputc(int c, t_my_file *stream);
 /*
 ** Level 1.
 */
+size_t		my_fread(void *ptr,
+			 size_t size,
+			 size_t nmemb,
+			 t_my_file *stream);
 int		my_fflush(t_my_file *stream);
 
 #endif /*!LIBSTREAM_H_ */

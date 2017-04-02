@@ -37,10 +37,15 @@ t_buffer	*buf_new();
 void		buf_free(t_buffer *buf);
 
 /*
-** Return the next (unsigned) char from buffer,
-** or -1 if the buffer is empty.
+** Return the next (unsigned) char from buffer, or -1 if the buffer is empty.
 */
 int		buf_getc(t_buffer *buf);
+
+/*
+** Return the number of bytes actually read (at most size bytes) from buffer
+** and copied to dst.
+*/
+size_t		buf_getbytes(t_buffer *buf, void *dst, size_t size);
 
 /*
 ** Read data from file (fildes), and store them in buffer.
