@@ -94,6 +94,7 @@ int		buf_flush(t_buffer *buf, int fildes)
   if (pos != (result = write(fildes, buf->data, pos)))
     return -1;
   buf->pos = 0;
+  buf->limit = 0;
   return result;
 }
 
