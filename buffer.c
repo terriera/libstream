@@ -12,7 +12,7 @@
 
 #define min(a, b) ((a) > (b) ? (b) : (a))
 
-static void		*memcpy(void *dst, const void *src, size_t n)
+static void		*my_memcpy(void *dst, const void *src, size_t n)
 {
   unsigned char		*d;
   const unsigned char	*s;
@@ -60,7 +60,21 @@ size_t		buf_getbytes(t_buffer *buf, void *dst, size_t size)
   if (buf->limit <= buf->pos || 0 == buf->limit)
     return 0;
   avail = min(buf->limit - buf->pos, size);
-  dst = memcpy(dst, &buf->data[buf->pos], avail);
+  my_memcpy(dst, &buf->data[buf->pos], avail);
+  buf->pos += avail;
+  return avail;
+}
+
+size_t		buf_putbytes(t_buffer *buf, const void *src, size_t size)
+{
+  size_t	avail;
+
+  if (NULL == buf)
+    return 0;
+  if (buf->pos >= MY_WRITE_SIZE)
+    return 0;
+  avail = min(MY_WRITE_SIZE - buf->pos, size);
+  my_memcpy(&buf->data[buf->pos], src, avail);
   buf->pos += avail;
   return avail;
 }

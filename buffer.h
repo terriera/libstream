@@ -41,6 +41,10 @@ void		buf_free(t_buffer *buf);
 */
 int		buf_getc(t_buffer *buf);
 
+
+size_t		buf_getbytes(t_buffer *buf, void *dst, size_t size);
+size_t		buf_putbytes(t_buffer *buf, const void *src, size_t size);
+
 /*
 ** Return the number of bytes actually read (at most size bytes) from buffer
 ** and copied to dst.
