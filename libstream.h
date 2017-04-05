@@ -45,6 +45,10 @@ size_t		my_fread(void *ptr,
 			 size_t size,
 			 size_t nmemb,
 			 t_my_file *stream);
+size_t		my_fwrite(const void *ptr, 
+			  size_t size, 
+			  size_t nmemb, 
+			  t_my_file *stream);
 int		my_fflush(t_my_file *stream);
 
 #endif /*!LIBSTREAM_H_ */
