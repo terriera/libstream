@@ -50,5 +50,6 @@ size_t		my_fwrite(const void *ptr,
 			  size_t nmemb, 
 			  t_my_file *stream);
 int		my_fflush(t_my_file *stream);
+int		my_fputs(const char *str, t_my_file *stream);
 
 #endif /*!LIBSTREAM_H_ */
