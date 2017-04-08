@@ -83,6 +83,5 @@ Temporary Items
 
 # Not to be included at this stage
 Test/
-my_fflush.c
 
 # End of https://www.gitignore.io/api/c,osx

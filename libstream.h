@@ -38,4 +38,19 @@ int		my_fclose(t_my_file *stream);
 int		my_fgetc(t_my_file *stream);
 int		my_fputc(int c, t_my_file *stream);
 
+/*
+** Level 1.
+*/
+size_t		my_fread(void *ptr,
+			 size_t size,
+			 size_t nmemb,
+			 t_my_file *stream);
+size_t		my_fwrite(const void *ptr, 
+			  size_t size, 
+			  size_t nmemb, 
+			  t_my_file *stream);
+int		my_fflush(t_my_file *stream);
+char		*my_fgets(char *str, int size, t_my_file *stream);
+int		my_fputs(const char *str, t_my_file *stream);
+
 #endif /*!LIBSTREAM_H_ */

@@ -9,10 +9,6 @@
 #include <fcntl.h>
 #include "libstream.h"
 
-/*
-** FIXME: replace direct access to buffer inner variables by a my_fflush call
-** when it's implemented.
-*/
 int	my_fgetc(t_my_file *stream)
 {
   int 	c;
@@ -21,11 +17,8 @@ int	my_fgetc(t_my_file *stream)
     return MY_EOF;
   if (ACC_WRITE == stream->last_access)
   {
-    if (-1 == buf_flush(stream->buffer, stream->fildes))
-    {
-      stream->flags |= LBS_ERR;
+    if (MY_EOF == my_fflush(stream))
       return MY_EOF;
-    }
     stream->last_access = ACC_READ;
   }
   if (-1 == (c = buf_getc(stream->buffer)))
