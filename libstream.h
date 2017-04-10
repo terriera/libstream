@@ -53,4 +53,9 @@ int		my_fflush(t_my_file *stream);
 char		*my_fgets(char *str, int size, t_my_file *stream);
 int		my_fputs(const char *str, t_my_file *stream);
 
+/*
+** Level 2.
+*/
+long		my_ftell(t_my_file *stream);
+
 #endif /*!LIBSTREAM_H_ */
