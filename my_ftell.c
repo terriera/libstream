@@ -9,10 +9,6 @@
 #include <unistd.h>
 #include "libstream.h"
 
-/*
-** FIXME: find a way to give t_buffer interface the offset job.
-**
-*/
 long	my_ftell(t_my_file *stream)
 {
   long	pos;
