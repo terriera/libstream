@@ -56,6 +56,8 @@ int		my_fputs(const char *str, t_my_file *stream);
 /*
 ** Level 2.
 */
+int		my_fseek(t_my_file *stream, long offset, int whence);
 long		my_ftell(t_my_file *stream);
+void		my_rewind(t_my_file *stream);
 
 #endif /*!LIBSTREAM_H_ */
