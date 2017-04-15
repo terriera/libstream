@@ -7,7 +7,6 @@
 
 #include <stdlib.h>
 #include <unistd.h>
-#include "libstream.h"
 #include "buffer.h"
 
 #define min(a, b) ((a) > (b) ? (b) : (a))

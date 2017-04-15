@@ -13,14 +13,12 @@
 ** Reads size bytes (at most) from stream and store it in dst.
 ** Returns the number of bytes actually read from stream.
 */
-size_t		read_item(t_my_file *stream, char *dst, size_t size)
+static size_t	read_item(t_my_file *stream, char *dst, size_t size)
 {
   size_t	avail;
   size_t	total;
   int		filled;
 
-  if (NULL == stream)
-    return 0;
   total = 0;
   avail = 0;
   while (total < size)
