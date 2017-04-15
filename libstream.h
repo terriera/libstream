@@ -1,6 +1,7 @@
 #ifndef LIBSTREAM_H_
 # define LIBSTREAM_H_
 
+# include <stdio.h>
 # include "libstream_defines.h"
 # include "buffer.h"
 
@@ -59,5 +60,7 @@ int		my_fputs(const char *str, t_my_file *stream);
 int		my_fseek(t_my_file *stream, long offset, int whence);
 long		my_ftell(t_my_file *stream);
 void		my_rewind(t_my_file *stream);
+int		my_fgetpos(t_my_file *stream, fpos_t *pos);
+int		my_fsetpos(t_my_file *stream, const fpos_t *pos);
 
 #endif /*!LIBSTREAM_H_ */
