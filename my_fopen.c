@@ -10,7 +10,13 @@
 #include <unistd.h>
 #include "libstream.h"
 
-static int	parse_mode(const char *mode, int *oflags)
+/*
+** Both parse_mode and create_stream are not static as they are useful for
+** my_fdopen as well.
+** Yet they're not declared in libstream.h as they're not meant to be part of
+** the public interface.
+*/
+int		parse_mode(const char *mode, int *oflags)
 {
   int		retval;
   int		write_mode;
@@ -39,19 +45,10 @@ static int	parse_mode(const char *mode, int *oflags)
   return retval;
 }
 
-t_my_file	*my_fopen(const char *path, const char *mode)
+t_my_file	*create_stream(int fildes, int flags)
 {
-  int		fildes;
-  int		oflags;
-  int		flags;
   t_my_file	*stream;
 
-  if (NULL == path || NULL == mode)
-    return NULL;
-  if (-1 == (flags = parse_mode(mode, &oflags)))
-    return NULL;
-  if (-1 == (fildes = open(path, oflags, 0666)))
-    return NULL;
   if (NULL == (stream = malloc(sizeof (t_my_file))))
   {
     close(fildes);
@@ -66,4 +63,19 @@ t_my_file	*my_fopen(const char *path, const char *mode)
   stream->flags = flags;
   stream->last_access = (stream->flags & LBS_WR) ? ACC_WRITE : ACC_READ;
   return stream;
+}
+
+t_my_file	*my_fopen(const char *path, const char *mode)
+{
+  int		fildes;
+  int		oflags;
+  int		flags;
+
+  if (NULL == path || NULL == mode)
+    return NULL;
+  if (-1 == (flags = parse_mode(mode, &oflags)))
+    return NULL;
+  if (-1 == (fildes = open(path, oflags, 0666)))
+    return NULL;
+  return create_stream(fildes, flags);
 }
