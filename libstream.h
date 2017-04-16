@@ -63,4 +63,12 @@ void		my_rewind(t_my_file *stream);
 int		my_fgetpos(t_my_file *stream, fpos_t *pos);
 int		my_fsetpos(t_my_file *stream, const fpos_t *pos);
 
+/*
+** Level 3.
+*/
+t_my_file	*my_fdopen(int fildes, const char *mode);
+t_my_file	*my_freopen(const char *path, 
+			    const char *mode, 
+			    t_my_file *stream);
+
 #endif /*!LIBSTREAM_H_ */
