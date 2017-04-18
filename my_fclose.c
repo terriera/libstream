@@ -19,7 +19,8 @@ int	my_fclose(t_my_file *stream)
   buf_flush(stream->buffer, stream->fildes);
   stream->fildes = -1;
   stream->flags = 0;
-  free(stream->buffer);
+  if (NULL != stream->buffer)
+    free(stream->buffer);
   free(stream);
   return (-1 == close(fildes)) ? MY_EOF : 0;
 }
