@@ -12,7 +12,7 @@
 ** Defined in my_fopen.c
 ** Not part of the public interface, so not declared in libstream.h.
 */
-int		parse_mode(const char *mode, int *oflags);
+int		parse_mode(const char *mode, int *raw_flags);
 t_my_file	*create_stream(int fildes, int flags);
 
 
@@ -23,12 +23,12 @@ t_my_file	*create_stream(int fildes, int flags);
 */
 t_my_file	*my_fdopen(int fildes, const char *mode)
 {
-  int		oflags;
+  int		raw_flags;
   int		flags;
 
   if (-1 == fildes || NULL == mode)
     return NULL;
-  if (-1 == (flags = parse_mode(mode, &oflags)))
+  if (-1 == (flags = parse_mode(mode, &raw_flags)))
     return NULL;
   return create_stream(fildes, flags);
 }
