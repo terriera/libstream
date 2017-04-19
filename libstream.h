@@ -1,3 +1,10 @@
+/*
+** libstream.h for libstream
+**
+** Made by Arnaud Terrier
+**
+*/
+
 #ifndef LIBSTREAM_H_
 # define LIBSTREAM_H_
 
@@ -5,11 +12,12 @@
 # include "libstream_defines.h"
 # include "buffer.h"
 
-# define LBS_RD		1
-# define LBS_WR		2
-# define LBS_RW		4
-# define LBS_EOF	8
-# define LBS_ERR	16
+# define LBS_OPENED	1
+# define LBS_RD		2
+# define LBS_WR		4
+# define LBS_RW		8
+# define LBS_EOF	16
+# define LBS_ERR	32
 
 # define MY_EOF		(-1)
 
