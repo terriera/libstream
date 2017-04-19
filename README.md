@@ -7,32 +7,32 @@ A library that handles buffered input / output.
 The functions defined in *libstream* are simply basic versions of the libc stdio functions which names are prefixed with 'my_' to avoid any collisions. Here are the so far implemented functions:
 ```C
 t_my_file	*my_fopen(const char *path, const char *mode);	
-  
-int	    	my_fclose(t_my_file *stream);
-  
-int	    	my_fputc(int c, t_my_file *stream);
-  
-int		    my_fgetc(t_my_file *stream);
- 
-size_t	    my_fread(void *ptr, size_t size, size_t nmemb, t_my_file *stream);
-		 
-size_t	    my_fwrite(const void *ptr, size_t size, size_t nmemb, t_my_file *stream);
- 		  
-char	    *my_fgets(char *str, int size, t_my_file *stream);
- 		  
-int		    my_fputs(const char *str, t_my_file *stream);
 
-int		    my_fflush(t_my_file *stream);
+int		my_fclose(t_my_file *stream);
 
-int		    my_fseek(t_my_file *stream, long offset, int whence);
+int		my_fputc(int c, t_my_file *stream);
 
-long	    my_ftell(t_my_file *stream);
+int		my_fgetc(t_my_file *stream);
 
-void	    my_rewind(t_my_file *stream);
+size_t		my_fread(void *ptr, size_t size, size_t nmemb, t_my_file *stream);
 
-int		    my_fgetpos(t_my_file *stream, fpos_t *pos);
+size_t		my_fwrite(const void *ptr, size_t size, size_t nmemb, t_my_file *stream);
 
-int	    	my_fsetpos(t_my_file *stream, const fpos_t *pos);
+char		*my_fgets(char *str, int size, t_my_file *stream);
+
+int		my_fputs(const char *str, t_my_file *stream);
+
+int		my_fflush(t_my_file *stream);
+
+int		my_fseek(t_my_file *stream, long offset, int whence);
+
+long		my_ftell(t_my_file *stream);
+
+void		my_rewind(t_my_file *stream);
+
+int		my_fgetpos(t_my_file *stream, fpos_t *pos);
+
+int		my_fsetpos(t_my_file *stream, const fpos_t *pos);
 
 t_my_file	*my_fdopen(int fildes, const char *mode);
 
